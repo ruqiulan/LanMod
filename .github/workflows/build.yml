@@ -23,12 +23,13 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      # 关键修改点 ▼ 添加 -x test 跳过测试
       - name: Build with Gradle (Skip Tests)
         run: ./gradlew build -x test --stacktrace
 
+      # 关键修改点 ▼ 升级到 v4
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mod-build
           path: build/libs/*.jar
+          retention-days: 3  # 自动清理旧构建
