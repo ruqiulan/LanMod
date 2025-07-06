@@ -1,0 +1,38 @@
+name: Minecraft Mod Build
+
+on:
+  push:
+    branches: [ "main" ]  # 代码推送到main分支时触发
+  pull_request:
+    branches: [ "main" ]  # 向main分支提PR时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 使用GitHub的Ubuntu虚拟机
+
+    steps:
+      # 步骤1：检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 步骤2：设置JDK 17（Minecraft 1.21必需）
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'  # Eclipse Temurin JDK
+
+      # 步骤3：给gradlew添加执行权限
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      # 步骤4：构建模组（关键步骤）
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      # 步骤5：上传构建产物（生成的.jar文件）
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: mod-build
+          path: build/libs/*.jar
