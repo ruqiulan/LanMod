@@ -1,15 +1,15 @@
 {
 	"schemaVersion": 1,
 	"id": "lanmod",
-	"version": "${version}",
+	"version": "1.0.0",
 	"name": "LanMod",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"ruqiulan"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/ruqiulan/LanMod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/lanmod/icon.png",
