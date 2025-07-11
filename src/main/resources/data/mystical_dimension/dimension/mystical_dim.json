@@ -1,0 +1,10 @@
+{
+  "type": "mystical_dimension:mystical_dim",
+  "generator": {
+    "type": "mystical_dimension:mystical_chunkgen",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "mystical_dimension:mystical_biome"
+    }
+  }
+}
