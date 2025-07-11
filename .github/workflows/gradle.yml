@@ -1,11 +1,10 @@
-   name: Build Fabric Mod
+name: Build Fabric Mod
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -15,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 21
+          java-version: 17
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
@@ -27,8 +26,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Upload build artifacts
+      - name: Upload mod jar
         uses: actions/upload-artifact@v4
         with:
-          name: LanMod-jar
-          path: build/libs/*.jar                                                                                                                                                   path: build/libs/*.jar
+          name: fabric-mod
+          path: build/libs/*.jar
